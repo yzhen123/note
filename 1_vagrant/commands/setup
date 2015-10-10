@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+#usage: setup <project folder>
+cd /E/versioncontrol/doubangit/shire-in-vagrant
+vagrant up
+echo 'start watching '+$1
+python ../code/.scripts/watch.py $1

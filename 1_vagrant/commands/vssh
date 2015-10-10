@@ -1,0 +1,3 @@
+#!/bin/bash
+cd ../shire-in-vagrant
+ssh -p 2222 -i ~/.ssh/devkey vagrant@127.0.0.1
