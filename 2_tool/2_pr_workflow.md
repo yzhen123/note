@@ -6,7 +6,7 @@
 
 ## 2.在本地创建dev分支进行开发
 
-```bat
+```sh
 git branch dev #新建分支dev
 git checkout dev #切换分支为dev
 ```
@@ -18,7 +18,7 @@ git checkout dev #切换分支为dev
 假如自上一次合并很长一段时间都没有写代码了，你希望将上游版本库中别人提交的代码同步到本地和远程的，在最新的代码的基础上进行开发，需要先用`git pull upstream master`同步到本地的master分支（还要同步到本地的dev），然后再`git push origin master`到fork的版本库。
 
 简化的开发流程就是：
-```bat
+```sh
 git checkout dev #切换到dev分支
 git pull upstream master #同步上游版本库的master分支
 git push origin dev #更新到fork版本库的master分支
@@ -41,7 +41,7 @@ fork相当于在服务器上clone整个项目，如果要保持fork的代码最�
 我fork后的地址为：http://code.dapps.douban.com/yangzhen/market.git
 
 然后需要运行的命令行：
-```bat
+```sh
 # clone到本地
 git clone http://code.dapps.douban.com/yangzhen/market.git  
 # 添加上游版本库的源
