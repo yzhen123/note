@@ -7,22 +7,39 @@
 ## 2.在本地创建dev分支进行开发
 
 ```sh
+git clone <your focked project>
 git branch dev #新建分支dev
 git checkout dev #切换分支为dev
 ```
 
+后面两句可以合并,等价于:
+```sh
+git clone <your fork>
+git checkout -b dev #新建并切换到分支dev
+```
+
 ## 3.写代码和提交
 
-### 1. 假如自上一次合并很长一段时间都没有写代码了
-
-假如自上一次合并很长一段时间都没有写代码了，你希望将上游版本库中别人提交的代码同步到本地和远程的，在最新的代码的基础上进行开发，需要先用`git pull upstream master`同步到本地的master分支（还要同步到本地的dev），然后再`git push origin master`到fork的版本库。
-
-简化的开发流程就是：
+当你在你的分支上写了很多代码后,可以随时提交到自己fork的远程仓库里,默认是origin,用于保存当前的工作状态:
 ```sh
-git checkout dev #切换到dev分支
-git pull upstream master #同步上游版本库的master分支
-git push origin dev #更新到fork版本库的master分支
-git rebase -i <commit> #合并commit
+git add -A #添加全部,也可以只添加某个文件夹或者修改的文件
+git commit -m <message>
+git push origin dev
+```
+
+如果想更新最新的代码,你需要使用以下代码添加上游仓库:
+```sh
+git remote add upstream <上游仓库地址>
+```
+
+然后通过下面命令查看:
+```sh
+git remote -v
+```
+
+当你觉得自己的部分已经写好了,可以提交到上游仓库了,需要先将自己的commit合并到
+```sh
+git rebase -i <commit> #合并commit,<http://blog.csdn.net/zmyde2010/article/details/8603810>
 git push origin dev -f #强制更新到fork版本库的master分支
 git fetch upstream master
 git rebase upstream/master #重置提交顺序，并检查是否有冲突
@@ -66,7 +83,7 @@ git checkout {branch name} #切换分支，这一步必不可少!
 git rebase upstream/{branch name}
 ```
 其中rebase的作用是合并分支代码,
-checkout和rebase 会把你的分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到".git/rebase"目录中),然后把"mywork"分支更新 为最新的"origin"分支，最后把保存的这些补丁应用到"mywork"分支上。（具体可见http://blog.csdn.net/hudashi/article/details/7664631）
+checkout和rebase 会把你的分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到".git/rebase"目录中),然后把"mywork"分支更新 为最新的"origin"分支，最后把保存的这些补丁应用到"mywork"分支上。（具体可见 http://blog.csdn.net/hudashi/article/details/7664631 ）
 
 
 ## 5.修正rebase冲突
