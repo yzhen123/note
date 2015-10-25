@@ -97,5 +97,12 @@ checkout和rebase 会把你的分支里的每个提交(commit)取消掉，并且
 git reset --hard ORIG_HEAD
 ```
 
+
+## 7.从别人那里pull代码
+
+```sh
+git pull --rebase <remote> <branch>
+```
+
 # 更多的git内容
 git.md

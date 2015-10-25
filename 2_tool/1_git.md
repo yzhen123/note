@@ -92,5 +92,13 @@ git update-index --assume-unchanged /path/to/file
 ```sh
 git update-index --no-assume-unchanged /path/to/file
 ```
+
+### 6.只clone一个最新的commit
+这种方法可以避免clone github上的项目因为太大而太慢..
+
+git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
+
+
+
 ## 常用概念
 HEAD 指向当前提交的一个指针 HEAD^^ HEAD往前两个版本 HEAD~3 HEAD回退3个版本
